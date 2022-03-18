@@ -8,4 +8,6 @@ public static class FancyPrint
         Console.WriteLine(s);
         Console.ForegroundColor = lastColor;
     }
+
+    public static void Print(string s) => Print(s, ConsoleColor.White);
 }

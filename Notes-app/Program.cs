@@ -2,7 +2,7 @@
 FancyPrint.Print("Print info to get help!\n<Command>:<args> or just <Command> if it doesn't have args", ConsoleColor.Green);
 while (true)
 {
-    List<string> input = Console.ReadLine().Split(':').ToList();
+    List<string> input = Console.ReadLine()!.Split(':').ToList();
     string command = input[0].ToLower();
     input.RemoveAt(0);
     if (input.Count == 0)
