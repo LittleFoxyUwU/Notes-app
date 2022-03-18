@@ -1,4 +1,3 @@
-
 public static class FancyPrint
 {
     public static void Print(string s, ConsoleColor color)

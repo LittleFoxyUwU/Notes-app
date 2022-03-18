@@ -1,5 +1,3 @@
-using Microsoft.VisualBasic;
-
 public static class NoteManager
 {
     public static ConsoleColor PrefColor = Console.ForegroundColor;
