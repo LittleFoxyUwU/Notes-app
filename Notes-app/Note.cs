@@ -4,6 +4,15 @@ public class Note
     public string Text;
     public DateTime Time;
     public ConsoleColor Color;
+
+    public Note()
+    {
+        Id = 0;
+        Text = "None";
+        Time = DateTime.Now;
+        Color = ConsoleColor.Black;
+    }
+    
     public Note(int id, string text, ConsoleColor color)
     {
         Id = id;

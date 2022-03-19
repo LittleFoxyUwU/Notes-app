@@ -3,10 +3,10 @@ FancyPrint.Print("Print info to get help!\n<Command>:<args> or just <Command> if
 while (true)
 {
     List<string> input = Console.ReadLine()!.Split(':').ToList();
-    string command = input[0].ToLower();
+    string command = input[0].ToLower().Trim();
     input.RemoveAt(0);
     if (input.Count == 0)
         NoteManager.ExecuteCommand(command);
-    else
+    else if (!string.IsNullOrWhiteSpace(input[0]))
         NoteManager.ExecuteCommand(command, input[0].Split().SkipWhile(string.IsNullOrWhiteSpace).ToArray());
 }
