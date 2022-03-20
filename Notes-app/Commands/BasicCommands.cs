@@ -3,7 +3,7 @@ namespace Commands;
 public static class BasicCommands
 {
     private static string information = "note: <text>\ncolornote: <color> <text>\ndisplay: Optional(<ID>)\nchange: <ID> <new text>\n" +
-                                        "delete: <ID>\ndeleteall\nundo\ncolor: <color>\n exit";
+                                        "delete: <ID>\ndeleteall\nundo\ncolor: <color>\nexit";
 
     public static void Info() => FancyPrint.Print(information, ConsoleColor.Green);
 
