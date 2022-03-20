@@ -2,7 +2,8 @@ using Commands;
 
 public static class NoteManager
 {
-    public static ConsoleColor PrefColor = Console.ForegroundColor;
+    public static List<Note>? BackupNotes;
+    public static string PrefColor = Console.ForegroundColor.ToString();
     public static List<Note> Notes = new(100);
     
     public static void ExecuteCommand(string command, string[]? args = null)
@@ -11,14 +12,7 @@ public static class NoteManager
         {
             case "info": BasicCommands.Info(); break;
             
-            case "note":
-                if (args == null)
-                {
-                    FancyPrint.Print("ERROR: Argument \"Text\" is missing!", ConsoleColor.Red);
-                    break;
-                }
-                NoteCommands.AddNote(string.Join(' ', args));
-                break;
+            case "note": NoteCommands.AddNote(string.Join(' ', args!)); break;
             
             case "colornote":
                 if (args!.Length < 2)
@@ -26,7 +20,7 @@ public static class NoteManager
                     FancyPrint.Print("ERROR: Either argument \"Color\" or \"Text\" is missing!", ConsoleColor.Red);
                     break;
                 }
-                NoteCommands.AddColorNote(GetColor.GetColorByName(args[0]), string.Join(' ', args[1..]));
+                NoteCommands.AddColorNote(args[0], string.Join(' ', args[1..]));
                 break;
                 
             case "display":
@@ -36,26 +30,11 @@ public static class NoteManager
                     NoteCommands.Display();
                 break;
 
-            case "delete":
-                if (args == null)
-                {
-                    FancyPrint.Print("ERROR: Argument \"ID\" not found!", ConsoleColor.Red);
-                    break;
-                }
-                int id = int.Parse(args[0]);
-                NoteCommands.Delete(id);
-                break;
+            case "delete": NoteCommands.Delete(int.Parse(args![0])); break;
             
-            case "exit": BasicCommands.Exit(); break;
-            
-            case "color":
-                if (args == null)
-                {
-                    FancyPrint.Print("ERROR: Argument \"Color\" not found!", ConsoleColor.Red);
-                    break;
-                }
-                BasicCommands.Color(GetColor.GetColorByName(args[0]));
-                break;
+            case "deleteall": NoteCommands.DeleteAll(); break;
+
+            case "color": BasicCommands.Color(args![0]); break;
             
             case "change":
                 if (args!.Length < 2)
@@ -66,6 +45,10 @@ public static class NoteManager
                 NoteCommands.Change(int.Parse(args[0]), string.Join(' ', args[1..]));
                 break;
                 
+            case "undo": NoteCommands.Undo(); break;
+            
+            case "exit": BasicCommands.Exit(); break;
+            
             default: FancyPrint.Print("ERROR: Invalid Command!", ConsoleColor.Red); break;
         }
     }

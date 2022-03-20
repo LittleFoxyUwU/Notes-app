@@ -6,8 +6,12 @@ public static class BasicCommands
                                         "delete: <ID>\tcolor: <color>\t exit";
 
     public static void Info() => FancyPrint.Print(information, ConsoleColor.Green);
+
+    public static void Exit()
+    {
+        NoteSerialization.SerializeNotes();
+        Environment.Exit(1);
+    }
     
-    public static void Exit() => Environment.Exit(1);
-    
-    public static void Color(ConsoleColor color) => NoteManager.PrefColor = color; 
+    public static void Color(string color) => NoteManager.PrefColor = color; 
 }
