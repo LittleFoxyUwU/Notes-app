@@ -56,6 +56,15 @@ public static class NoteManager
                 }
                 BasicCommands.Color(GetColor.GetColorByName(args[0]));
                 break;
+            
+            case "change":
+                if (args!.Length < 2)
+                {
+                    FancyPrint.Print("ERROR: Either argument \"Id\" or \"Text\" is missing!", ConsoleColor.Red);
+                    break;
+                }
+                NoteCommands.Change(int.Parse(args[0]), string.Join(' ', args[1..]));
+                break;
                 
             default: FancyPrint.Print("ERROR: Invalid Command!", ConsoleColor.Red); break;
         }

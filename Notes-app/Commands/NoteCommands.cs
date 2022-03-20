@@ -1,5 +1,4 @@
 namespace Commands;
-using Newtonsoft.Json;
 public static class NoteCommands
 {
     public static void Display()
@@ -32,6 +31,8 @@ public static class NoteCommands
         NoteManager.Notes.Remove(NoteManager.Notes.Find(x => x.Id == id)!);
         ReorderNotes();
     }
+
+    public static void Change(int id, string newText) => NoteManager.Notes.First(x => x.Id == id).Text = newText;
     
     private static void ReorderNotes()
     {
