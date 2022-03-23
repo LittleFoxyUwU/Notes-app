@@ -36,18 +36,30 @@ public static class NoteManager
 
             case "color": BasicCommands.Color(args![0]); break;
             
-            case "change":
+            case "changetext":
                 if (args!.Length < 2)
                 {
                     FancyPrint.Print("ERROR: Either argument \"Id\" or \"Text\" is missing!", ConsoleColor.Red);
                     break;
                 }
-                NoteCommands.Change(int.Parse(args[0]), string.Join(' ', args[1..]));
+                NoteCommands.ChangeText(int.Parse(args[0]), string.Join(' ', args[1..]));
+                break;
+            
+            case "changecolor":
+                if (args!.Length < 2)
+                {
+                    FancyPrint.Print("ERROR: Either argument \"Id\" or \"Color\" is missing!", ConsoleColor.Red);
+                    break;
+                }
+                NoteCommands.ChangeColor(int.Parse(args[0]), args[1]);
                 break;
                 
-            case "undo": NoteCommands.Undo(); break;
+            case "undo": BasicCommands.Undo(); break;
             
             case "exit": BasicCommands.Exit(); break;
+            
+            case "save": NoteSerialization.SerializeNotes();
+                break;
             
             default: FancyPrint.Print("ERROR: Invalid Command!", ConsoleColor.Red); break;
         }

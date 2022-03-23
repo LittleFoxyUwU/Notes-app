@@ -1,5 +1,4 @@
 ﻿Console.Title = "Notes";
-Console.WriteLine();
 NoteSerialization.DeserializeNotes();
 FancyPrint.Print("\nPrint info to get help!\n<Command>:<args> or just <Command> if it doesn't have \n", ConsoleColor.Green);
 FancyPrint.Print("IF YOU EXIT PROGRAM USING ANYTHING ELSE EXCEPT COMMAND exit DATA WON'T BE SAVED\n", ConsoleColor.Red);

@@ -8,8 +8,10 @@ public static class GetColor
         "green" => ConsoleColor.Green,
         "pink" or "magenta" => ConsoleColor.Magenta,
         "yellow" => ConsoleColor.Yellow,
-        "white" => ConsoleColor.White,
+        "white" or "light" => ConsoleColor.White,
         "black" or "dark" => ConsoleColor.Black,
+        "cyan" => ConsoleColor.Cyan,
+        "gray" => ConsoleColor.Gray,
         _ => ConsoleColor.White
     };
 }

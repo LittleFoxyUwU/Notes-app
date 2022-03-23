@@ -19,13 +19,13 @@ public static class NoteSerialization
             if (!File.Exists("Data.json")) return;
             using (var s = new StreamReader("Data.json"))
             {
-                NoteManager.Notes = new (JsonSerializer.Deserialize<List<Note>>(s.BaseStream)!);
+                NoteManager.Notes = new List<Note>(JsonSerializer.Deserialize<List<Note>>(s.BaseStream)!);
                 FancyPrint.Print($"{NoteManager.Notes.Count} notes were loaded from Data.json!", ConsoleColor.Yellow);
             }
         }
-        catch 
+        catch(Exception e)
         {
-            FancyPrint.Print("Can't load from Data.json");
+            FancyPrint.Print($"Can't load from Data.json || {e.Message})", ConsoleColor.Red);
         }
     }
 }
