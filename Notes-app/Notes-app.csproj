@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <None Remove="Data.json"/>
+      <None Remove="Data.json" />
     </ItemGroup>
 
 </Project>

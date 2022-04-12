@@ -1,6 +1,6 @@
 public static class FancyPrint
 {
-    /// <summary> Prints colored text</summary>
+    /// <summary>Prints colored text</summary>
     public static void Print(string s, ConsoleColor color)
     {
         var lastColor = Console.ForegroundColor;
@@ -11,4 +11,8 @@ public static class FancyPrint
     public static void Print(string s) => Print(s, ConsoleColor.White);
 
     public static void Print(string s, string color) => Print(s, GetColor.GetColorByName(color));
+
+    ///<summary>Prints an error with red color</summary>
+    public static void Error(string s) => Print(s, ConsoleColor.Red);
+    
 }

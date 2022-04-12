@@ -25,7 +25,7 @@ public static class NoteSerialization
         }
         catch(Exception e)
         {
-            FancyPrint.Print($"Can't load from Data.json || {e.Message})", ConsoleColor.Red);
+            FancyPrint.Error($"Can't load from Data.json || {e.Message})");
         }
     }
 }
