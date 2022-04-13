@@ -88,22 +88,53 @@ public static class NoteCommands
         NoteManager.Notes = new List<Note>(100);
     }
 
-    public static void ChangeText(int id, string newText)
+    public static void ChangeText(string[]? args)
     {
         BackUpNotes();
-        NoteManager.Notes.First(x => x.Id == id).Text = newText;
+        int id;
+        if (args!.Length < 2)
+        {
+            FancyPrint.Error(" Either argument \"Id\" or \"Text\" is missing!");
+            return;
+        }
+
+        try
+        {
+            id = int.Parse(args[0]);
+        }
+        catch 
+        {
+            FancyPrint.Error("Can't parse first argument to integer!");
+            return;
+        }
+        NoteManager.Notes.First(x => x.Id == id).Text = string.Join(' ', args[1..]);
         NoteManager.Notes.First(x => x.Id == id).Time = DateTime.Now;
     }
 
-    public static void ChangeColor(int id, string color)
+    public static void ChangeColor(string[]? args)
     {
         BackUpNotes();
-        NoteManager.Notes.First(x => x.Id == id).Color = color;
+        int id;
+        if (args!.Length < 2)
+        {
+            FancyPrint.Error(" Either argument \"Id\" or \"Text\" is missing!");
+            return;
+        }
+
+        try
+        {
+            id = int.Parse(args[0]);
+        }
+        catch 
+        {
+            FancyPrint.Error("Can't parse first argument to integer!");
+            return;
+        }
+        NoteManager.Notes.First(x => x.Id == id).Color = args[1];
     }
     
     private static void ReorderNotes()
     {
-        BackUpNotes();
         for (int i = 0; i < NoteManager.Notes.Count; i++)
             NoteManager.Notes[i].Id = i + 1;
     }
